@@ -1,0 +1,43 @@
+ALGORITHM um_distinct_Sol2
+VAR
+     htab : HASH_TABLE<INTEGER,INTEGER>;
+     E1 : ARRAY_OF INTEGER[50];
+     E2 : ARRAY_OF INTEGER[50];
+     i,j,count,sum_distinct : INTEGER;
+BEGIN
+i:=0;
+j:=0;
+count:= 0;
+    FOR i FROM 0 to E1.length + E2.length -2 STEP 1 DO
+      IF (htab.lookup(E1[i]) = True) THEN 
+           count := htab.getkey(E1[i]);          
+           htab.insert(E1[i],count+1);
+           
+       ELSE
+           htab.insert(E1[i],1);
+      END_IF
+      
+      IF (htab.lookup(E2[i]) = True) THEN 
+           count := htab.getkey(E2[i]);          
+           htab.insert(E2[i],count+1);
+           
+       ELSE
+           htab.insert(E2[i],1);
+       END_IF
+    END_FOR
+
+sum_distinct := 0;
+
+    FOR j FROM 0 TO E1.length + E2.length -2 STEP 1  DO
+       IF (htab.getKey(j) = 1  ) THEN
+           sum_distinct := sum_distinct + htab.getValue(j);
+           BREAK;
+       END_IF
+   END_FOR
+
+   Write(sum_distinct);
+
+
+
+
+END

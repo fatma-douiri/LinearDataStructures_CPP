@@ -1,0 +1,18 @@
+ALGORITHM sum_overlapping_Sol1
+VAR
+    E1 : ARRAY_OF INTEGER[10];
+    E2 : ARRAY_OF INTEGER[10];
+    sum_overlapping :INTEGER;
+    i,j : INTEGER;
+BEGIN
+    i=0;
+    j=0;
+    sum_distinct=0;
+    FOR i FROM 0 to E1.length-1 STEP 1 DO
+       FOR j FROM 0 to E2.length-1 STEP 1 DO
+           IF ( E1[i] = E1[j] ) THEN 
+           sum_overlapping:=sum_overlapping + E1[i]+ E1[j];
+       END_FOR
+    END_FOR
+    Write (sum_overlapping)
+END
