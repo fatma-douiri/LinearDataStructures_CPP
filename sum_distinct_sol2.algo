@@ -28,7 +28,7 @@ count:= 0;
 
 sum_distinct := 0;
 
-    FOR j FROM 0 TO E1.length + E2.length -2 STEP 1  DO
+    FOR j FROM 0 TO count + 1 STEP 1  DO
        IF (htab.getKey(j) = 1  ) THEN
            sum_distinct := sum_distinct + htab.getValue(j);
            BREAK;
